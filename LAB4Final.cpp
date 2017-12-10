@@ -1,5 +1,6 @@
-	#include<iostream>
-	#include<math.h>
+	#include <iostream>
+	#include <iomanip>
+	#include <math.h>
 	#define n 5
 	
 
@@ -23,10 +24,10 @@
 	{
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < n; j++) {
-				cout << "Please, enter the element [" << i+1 << ";" << j+1 << "]";
+				cout << " Please, enter the element [" << i + 1 << "][" << j + 1 << "] ";
 				cin >> matrix[i][j];
-				cout << endl;
 			}
+		cout << endl;
 		}
 	}
 	
@@ -35,12 +36,12 @@
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < n; j++) {
 				if (j == 0) cout << endl;
-				cout << matrix[i][j] << "\t";
+				cout << setw(6) << matrix[i][j] << "\t";
 			}
 		}
 	}
 	
-	void Matrix::matrix_sorting()
+	void Matrix::matrix_sorting() // insertion sort of raws in descending order
 	{
 		for (i = 0;i < n; i++)
 		{
@@ -62,7 +63,7 @@
 		}
 	}
 	
-	 void Matrix::column_summation_and_geometric_mean()
+	 void Matrix::column_summation_and_geometric_mean() // summation of columns' elements over the main matrix diagonal
 	 {
 	 cout << endl;
 	 g_m=1;
@@ -74,24 +75,23 @@
 			}
 		}
 		g_m *= sum[j];
-		cout << "Sum of " << j + 1 << " column is " << sum[j] << endl;
+		cout << " Sum of " << j + 1 << " column is " << sum[j] << endl;
 	 }
-	 g_m = pow(fabs(g_m),0.25);
-	 cout << "Geometric mean: " << g_m << endl;
+	 g_m = pow(fabs(g_m),0.25); 
+	 cout << "\n Geometric mean of sums: " << g_m << endl; // geometric mean of all sums
  }
 
  int main()
 	{	Matrix X;
 		X.matrix_input();
-		cout << endl;
-		cout << "Entered matrix:\n";
+		cout << " Entered matrix:";
 		X.matrix_output();
 		cout << endl;
 		X.matrix_sorting();
-		cout <<"\n New matrix:\n";
+		cout <<"\n New matrix:";
 		X.matrix_output();
 		cout << endl;
-		cout <<"\n Summation:\n";
+		cout <<"\n Summation:";
 		X.column_summation_and_geometric_mean();
 		cout << endl;
 	}
